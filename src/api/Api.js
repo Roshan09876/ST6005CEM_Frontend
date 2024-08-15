@@ -2,7 +2,7 @@ import axios from "axios";
 
 const Api = axios.create({
     // baseURL: "http://localhost:5500/api",
-    baseURL: "https://st6005cem-backend.onrender.com",
+    baseURL: "https://st6005cem-backend.onrender.com/api/",
     withCredentials: true,
     headers: {
         "Content-Type": "multipart/form-data"
@@ -18,14 +18,14 @@ const getAuthHeaders = () => ({
 
 export const testApi = () => Api.get("/");
 
-export const registerApi = (userData) => Api.post("/user/register", userData);
+export const registerApi = (userData) => Api.post("user/register", userData);
 
 export const loginApi = (userData) => Api.post("user/login", userData);
 
 export const getProfileApi = (id) => Api.get(`user/profile/${id}`, getAuthHeaders());
 
 // Update Profile API
-export const updateProfileApi = (id, formData) => Api.put(`/user/update/${id}`, formData, getAuthHeaders());
+export const updateProfileApi = (id, formData) => Api.put(`user/update/${id}`, formData, getAuthHeaders());
 
 //------------------------- All Users -------------------------
 export const getallusersAPI = () => Api.get("user/allusers")
@@ -51,10 +51,10 @@ export const addToCartApi = (userId, productId, quantity) =>
 export const getCartApi = (userId) => Api.get(`/cart/getcart/${userId}`, getAuthHeaders());
 
 // Delete item from cart
-export const deleteCartItemApi = (userId, productId) => Api.delete(`/cart/delete/`, {
+export const deleteCartItemApi = (userId, productId) => Api.delete(`cart/delete/`, {
     data: { userId, productId }, ...getAuthHeaders()
 });
 
 //-------------------------  Get Activity Logs -------------------------
-export const getActivityLogsApi = () => Api.get("/user/logactivities", getAuthHeaders());
+export const getActivityLogsApi = () => Api.get("user/logactivities", getAuthHeaders());
 

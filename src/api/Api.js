@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const Api = axios.create({
-    baseURL: "http://localhost:5500/api",
+    // baseURL: "http://localhost:5500/api",
+    baseURL: "https://st6005cem-backend.onrender.com",
     withCredentials: true,
     headers: {
         "Content-Type": "multipart/form-data"
